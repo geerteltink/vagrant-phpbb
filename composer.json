@@ -1,0 +1,42 @@
+{
+    "name"        : "xtreamwayz/vagrant-phpbb",
+    "description" : "An out-of-the-box phpBB flavored Vagrant development box managed by Composer",
+    "type"        : "project",
+    "keywords": [
+        "Vagrant",
+        "Puppet",
+        "Composer",
+        "phpBB"
+    ],
+    "homepage"    : "https://github.com/xtreamwayz/vagrant-phpbb",
+    "license"     : "MIT",
+    "authors": [{
+        "name"    : "Geert Eltink",
+        "homepage": "https://xtreamwayz.github.io/",
+        "role"    : "Lead Developer"
+    }],
+    "require": {
+        "xtreamwayz/phpbb-installer": "~2.0",
+        "phpbb/phpbb": "3.1.*",
+        "composer/installers": "~1.0",
+        "xtreamwayz/activity": "dev-master",
+        "xtreamwayz/portal": "dev-master",
+        "xtreamwayz/tools": "dev-master"
+    },
+    "require-dev": {
+        "xtreamwayz/vagrant-puppet": "~2.0",
+        "nicofuma/webprofiler": "~1.0"
+    },
+    "scripts": {
+        "post-update-cmd": "XtreamWayz\\PhpbbInstaller\\ScriptHandler::install",
+        "post-install-cmd": "XtreamWayz\\PhpbbInstaller\\ScriptHandler::install"
+    },
+    "extra": {
+        "phpbb-install-dir": "public",
+        "installer-paths": {
+            "public/ext/{$vendor}/{$name}/": ["type:phpbb-extension"],
+            "public/styles/{$name}/": ["type:phpbb-style"],
+            "public/language/{$name}/": ["type:phpbb-language"]
+        }
+    }
+}
